@@ -1,24 +1,26 @@
 
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { api } from './api'
 import './App.css'
-
-const API_URL = 'http://127.0.0.1:8000/api'
 
 function App() {
   const [doctors, setDoctors] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch(`${API_URL}/doctors/`)
-      .then((response) => {
-        if (!response.ok) throw new Error('Unable to load doctors')
-        return response.json()
-      })
-      .then((data) => {
-        setDoctors(data.results || data)
+    async function loadDoctors() {
+      try {
+        const response = await api.get('doctors/')
+        setDoctors(response.data.results || response.data)
+      } catch (error) {
+        console.error('Unable to load doctors:', error)
+      } finally {
         setLoading(false)
-      })
-      .catch(() => setLoading(false))
+      }
+    }
+
+    loadDoctors()
   }, [])
 
   return (
@@ -40,10 +42,10 @@ function App() {
         </nav>
 
         <div className="nav-actions">
-          <a href="/login" className="login-link">Log in</a>
-          <a href="/appointments" className="nav-button">
-            Book an Appointment
-          </a>
+          <Link to="/login" className="login-link">Log in</Link>
+          <Link to="/register" className="nav-button">
+            Register
+          </Link>
         </div>
       </header>
 
@@ -64,9 +66,9 @@ function App() {
             </p>
 
             <div className="hero-actions">
-              <a href="/appointments" className="primary-button">
+              <Link to="/login" className="primary-button">
                 Book an Appointment <span>→</span>
-              </a>
+              </Link>
               <a href="#services" className="secondary-button">
                 Explore Our Services
               </a>
@@ -155,8 +157,7 @@ function App() {
             </div>
           ) : (
             <p className="doctor-message">
-              Our doctor directory is currently unavailable. Please try again
-              later.
+              No doctors are currently available.
             </p>
           )}
         </section>
@@ -171,9 +172,9 @@ function App() {
             </p>
           </div>
 
-          <a href="/appointments" className="banner-button">
+          <Link to="/login" className="banner-button">
             Book an Appointment →
-          </a>
+          </Link>
         </section>
       </main>
 
