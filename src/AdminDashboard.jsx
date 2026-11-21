@@ -284,7 +284,9 @@ function AdminDashboard() {
           <p>Manage your medical centre.</p>
         </div>
 
-        <button onClick={handleLogout}>Log out</button>
+        <button onClick={handleLogout} style={buttonStyle}>
+          Log out
+        </button>
       </header>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
