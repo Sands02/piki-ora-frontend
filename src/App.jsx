@@ -52,8 +52,6 @@ function App() {
       <main>
         <section className="hero hero-simple" id="home">
           <div className="hero-content">
-            <span className="eyebrow">YOUR HEALTH, OUR PRIORITY</span>
-
             <h1>
               Better health
               <br />
@@ -72,11 +70,6 @@ function App() {
               <a href="#services" className="secondary-button">
                 Explore Our Services
               </a>
-            </div>
-
-            <div className="hero-note">
-              <span className="note-icon">✓</span>
-              Caring for our community, every day.
             </div>
           </div>
         </section>
