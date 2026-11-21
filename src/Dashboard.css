@@ -21,7 +21,8 @@
 }
 
 .logout-button,
-.booking-form button {
+.booking-form button,
+.save-edit-button {
   background: #237c63;
   color: white;
   border: none;
@@ -65,26 +66,31 @@
   margin-top: 0;
 }
 
-.booking-form {
+.booking-form,
+.edit-appointment-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-top: 25px;
 }
 
-.booking-form label {
+.booking-form label,
+.edit-appointment-form label {
   color: #254b3e;
   font-weight: 600;
   font-size: 14px;
 }
 
 .booking-form select,
-.booking-form textarea {
+.booking-form textarea,
+.edit-appointment-form select,
+.edit-appointment-form textarea {
   width: 100%;
   padding: 13px;
   border: 1px solid #dce5df;
   border-radius: 7px;
   font: inherit;
+  box-sizing: border-box;
 }
 
 .booking-form button {
@@ -100,10 +106,15 @@
 .appointment-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
   padding: 20px 0;
   border-bottom: 1px solid #e8eee9;
+}
+
+.appointment-details {
+  flex: 1;
+  min-width: 0;
 }
 
 .appointment-item h3 {
@@ -121,6 +132,21 @@
   font-weight: 600;
 }
 
+.appointment-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.edit-button {
+  background: #e8f5ed;
+  color: #237c63;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 .cancel-button {
   background: #fff0ef;
   color: #a83232;
@@ -128,6 +154,33 @@
   padding: 10px 15px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.edit-appointment-form {
+  max-width: 600px;
+  padding: 20px;
+  background: #f5f8f6;
+  border-radius: 8px;
+}
+
+.edit-appointment-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.save-edit-button,
+.cancel-edit-button {
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-edit-button {
+  background: #e8ece9;
+  color: #35483f;
+  border: none;
 }
 
 .dashboard-success,
@@ -153,7 +206,10 @@
   }
 
   .appointment-item {
-    align-items: flex-start;
     flex-direction: column;
+  }
+
+  .appointment-actions {
+    width: 100%;
   }
 }
